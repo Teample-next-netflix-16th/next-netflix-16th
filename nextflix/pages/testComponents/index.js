@@ -1,9 +1,11 @@
+import Layout from '../../components/ui/Layout'
 
-
-const testComponents = () =>{
-    return <>
-        <h1>test!!!!!!!!!!!!!!!!!</h1>
-    </>
+const testComponents = () => {
+  return (
+    <div>
+      <Layout />
+    </div>
+  )
 }
 
 export default testComponents
