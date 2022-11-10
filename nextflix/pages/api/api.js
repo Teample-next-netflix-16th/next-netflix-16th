@@ -31,8 +31,3 @@ export async function getUpcoming() {
   const upcoming = await api.get('upcoming?');
   return upcoming;
 };
-
-export async function getImg(movie_id) {
-  const poster = await api.get('${movie_id}/images?');
-  return poster;
-};
