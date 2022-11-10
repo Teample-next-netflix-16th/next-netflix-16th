@@ -12,6 +12,10 @@ const Box = styled.div`
   border-style: dotted;
   border-color: white;
   margin: auto;
+
+  Footer{
+   
+  }
 `
 
 const Layout = ({ children }) => {

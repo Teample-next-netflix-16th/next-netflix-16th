@@ -3,7 +3,6 @@ import { RiHome2Line, RiSearchLine } from 'react-icons/ri'
 import { HiDownload } from 'react-icons/hi'
 import { BsList } from 'react-icons/bs'
 import { MdOutlineVideoLibrary } from 'react-icons/md'
-import Image from 'next/image'
 
 const BtmNav = styled.footer`
   width: 100%;
@@ -13,8 +12,7 @@ const BtmNav = styled.footer`
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
   position: absolute;
 `
 
@@ -23,8 +21,10 @@ const Icon = styled.div`
   color: #8c8787;
   display: flex;
   flex-direction: column;
-  align-content a {
-    font-size: 13px;
+  align-items: center;
+    margin: auto;
+   a {
+    font-size: 10px;
   }
 `
 
@@ -32,23 +32,23 @@ const Footer = () => {
   return (
     <BtmNav>
       <Icon>
-        <RiHome2Line />
+        <RiHome2Line size={25} />
         <a>Home</a>
       </Icon>
       <Icon>
-        <RiSearchLine />
+        <RiSearchLine size={25} />
         <a>Search</a>
       </Icon>
       <Icon>
-        <MdOutlineVideoLibrary />
+        <MdOutlineVideoLibrary size={25}/>
         <a>Coming Soon</a>
       </Icon>
       <Icon>
-        <HiDownload />
+        <HiDownload size={25}/>
         <a>Downloads</a>
       </Icon>
       <Icon>
-        <BsList />
+        <BsList size={25}/>
         <a>More</a>
       </Icon>
     </BtmNav>

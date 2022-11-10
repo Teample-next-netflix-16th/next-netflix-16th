@@ -1,7 +1,8 @@
+
 import axios from "axios";
 import { useEffect,useState } from "react";
 import styled from "styled-components";
-import { getPopular } from "../../api/api";
+import {getNowPlaying} from '../../api/api';
 
 const MoviePoster = styled.img`
     width: 100px;
@@ -9,13 +10,14 @@ const MoviePoster = styled.img`
 `
 
 export const getServerSideProps = async () =>{
-    const res =  await getPopular();
+    const res =  await getNowPlaying();
     const data = res.data;
 
   return { props: { data } }
 }
 
-const Popular =({data}) =>{
+
+const NowPlaying =({data}) =>{
     // const [movies,setMovies] = useState([]);
 
     // useEffect(()=>{
@@ -24,14 +26,15 @@ const Popular =({data}) =>{
 
     return(
     <div>
-    {data.results.map((movie)=>(
+        <div style={{color:'white'}}>now playing</div>
+    {/* {movies.map((movie)=>(    
         <div key={movie.id}>
         <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}/>
         </div>
-    ))}
+    ))} */}
     </div>
     );
 
 }
 
-export default Popular;
+export default NowPlaying;

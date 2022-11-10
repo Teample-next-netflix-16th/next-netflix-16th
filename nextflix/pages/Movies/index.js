@@ -1,12 +1,12 @@
-// import MovieList from '../../components/MovieList/index'
-import Popular from "./Popular"
+// // // import MovieList from '../../components/MovieList/index'
+// // import Popular from "./Popular"
 
-const Movies = () => {
-  return (
-    <div>
-      <Popular/>
-    </div>
-  )
-}
+// const Movies = () => {
+//   return (
+//     <div>
+//       <Popular/>
+//     </div>
+//   )
+// }
 
-export default Movies
+// export default Movies
