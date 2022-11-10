@@ -10,7 +10,7 @@ const Box = styled.div`
   background-color: black;
   border-color: white;
   margin: auto;
-
+  min-width:375px
 
 `
 const Children = styled.div`

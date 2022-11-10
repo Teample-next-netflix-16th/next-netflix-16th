@@ -88,8 +88,13 @@ const MoviesContainer = styled.div`
 `
 
 const Category = styled.h3`
+<<<<<<< HEAD
     font-size: 27px;
     margin-left: 12px;
+=======
+    font-size: 24px;
+    margin-left: 15px;
+>>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
 `;
 
 const PosterContainer = styled.div`
@@ -98,15 +103,26 @@ const PosterContainer = styled.div`
 `;
 
 const MoviePoster = styled.img`
+<<<<<<< HEAD
     width: 100px;
     height: 100px;
     margin-right: 7px;
+=======
+    width: 103px;
+    height: 161px;
+    margin-left: 5px;
+>>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
 `
 
 const PreviewMoviePoster = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 102px;
+    height: 102px;
     border-radius: 50%;
+<<<<<<< HEAD
     margin-right: 7px;
+=======
+    margin-left: 5px;
+
+>>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
 `
 
