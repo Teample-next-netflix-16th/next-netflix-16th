@@ -23,10 +23,6 @@ const NowPlaying =({data}) =>{
     //     setMovies(data.results);
     // },[movies])
 
-        useEffect(()=>{
-        console.log(data);
-    },);
-
     return(
     <div>
         <div style={{color:'white'}}>now playing</div>
