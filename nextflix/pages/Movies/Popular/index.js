@@ -15,17 +15,16 @@ export const getServerSideProps = async () =>{
   return { props: { data } }
 }
 
+const Popular =({data}) =>{
+    // const [movies,setMovies] = useState([]);
 
-const NowPlaying =({data}) =>{
-    const [movies,setMovies] = useState([]);
-
-    useEffect(()=>{
-        setMovies(data.results);
-    },[movies])
+    // useEffect(()=>{
+    //     setMovies(data.results);
+    // },[movies])
 
     return(
     <div>
-    {movies.map((movie)=>(    
+    {data.results.map((movie)=>(
         <div key={movie.id}>
         <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}/>
         </div>
@@ -35,4 +34,4 @@ const NowPlaying =({data}) =>{
 
 }
 
-export default NowPlaying;
+export default Popular;

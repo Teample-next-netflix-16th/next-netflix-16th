@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import Logo from '../../../public/images/Netflix-logo.png';
-import Image from "next/image";
-
+import styled from 'styled-components'
+import Logo from '../../../public/images/Netflix-logo.png'
+import Image from 'next/image'
 
 const TopNavbar = styled.nav`
     position : absolute;
@@ -24,24 +23,24 @@ a{
     cursor: pointer;
     margin-top : 10px;
 }
-`;
+`
 
 const Home = styled.div`
   cursor: pointer;
-  margin-left:10px;
+  margin-left: 10px;
   margin-top: 0px;
 `
 
-const TopNav = () =>{
-    return(
-        <TopNavbar>
-        <Home>
-            <Image src={Logo} alt='' width={30} height={40}/>
-        </Home>
-        <a>TV Shows</a>
-        <a>Movies</a>
-        <a>My List</a>
-        </TopNavbar>
-    )
+const TopNav = () => {
+  return (
+    <TopNavbar>
+      <Home>
+        <Image src={Logo} alt="" width={30} height={40} />
+      </Home>
+      <a>TV Shows</a>
+      <a>Movies</a>
+      <a>My List</a>
+    </TopNavbar>
+  )
 }
-export default TopNav;
+export default TopNav

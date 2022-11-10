@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import TopNav from '../TopNav';
-import Footer from '../Footer';
+import TopNav from '../TopNav'
+import Footer from '../Footer'
 
 const Box = styled.div`
   position: relative;
@@ -12,15 +12,14 @@ const Box = styled.div`
   border-style: dotted;
   border-color: white;
   margin: auto;
-`;
+`
 
-
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <Box>
-        <TopNav/>
-        {children}
-        <Footer/>
+      <TopNav />
+      {children}
+      <Footer />
     </Box>
   )
 }

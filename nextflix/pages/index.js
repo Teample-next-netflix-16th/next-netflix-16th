@@ -1,16 +1,18 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import Image from 'next/image'
 import { createGlobalStyle } from 'styled-components'
+import logoanimation from '../public/netflix.gif'
 
 const GlobalStyle = createGlobalStyle`
 html, body {
   height: 100%;
   overflow: auto;
-
+  
   h1{
     color: pink;
-  }
+  }}
 `
 
 export default function Home() {
@@ -29,6 +31,7 @@ export default function Home() {
         {/* link 연습하기 ㅋㅋ */}
         <h1>main page test</h1>
       </Link>
+      {/* <Image src={logoanimation} alt='netflix' style={{width:'100%',height:'100%'}}/> */}
     </div>
   )
 }

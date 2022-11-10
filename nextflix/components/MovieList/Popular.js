@@ -1,7 +1,7 @@
 // import axios from "axios";
 // import { useEffect,useState } from "react";
 // import styled from "styled-components";
-// import { getNowPlaying } from "../../api/api";
+// import { getPopular } from  "../../pages/api/api"
 
 // const MoviePoster = styled.img`
 //     width: 100px;
@@ -9,22 +9,19 @@
 // `
 
 // export const getServerSideProps = async () =>{
-//     const res =  await getNowPlaying();
+//     const res =  await getPopular();
 //     const data = res.data;
 
 //   return { props: { data } }
 // }
 
-// const NowPlaying =({data}) =>{
-//     const [movies,setMovies] = useState([]);
 
-//     useEffect(()=>{
-//         setMovies(data.results);
-//     },[movies])
+// const Popular =({data}) =>{
+
 
 //     return(
 //     <div>
-//     {movies.map((movie)=>(
+//     {data.results.map((movie)=>(    
 //         <div key={movie.id}>
 //         <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}/>
 //         </div>
@@ -34,4 +31,4 @@
 
 // }
 
-// export default NowPlaying;
+// export default Popular;
