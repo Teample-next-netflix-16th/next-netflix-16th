@@ -1,4 +1,4 @@
-import { getUpcoming } from "../../api/api";
+import { getUpcoming } from "../../pages/api/api";
 import { useEffect,useState } from "react";
 import styled from "styled-components";
 
