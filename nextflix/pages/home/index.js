@@ -87,7 +87,7 @@ const MoviesContainer = styled.div`
 `
 
 const Category = styled.h3`
-
+    font-size: 26.75px;
 `;
 
 const PosterContainer = styled.div`
@@ -101,8 +101,8 @@ const MoviePoster = styled.img`
 `
 
 const PreviewMoviePoster = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 102px;
+    height: 102px;
     border-radius: 50%;
 `
 
