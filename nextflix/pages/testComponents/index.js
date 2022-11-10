@@ -1,10 +1,11 @@
 import Layout from '../../components/ui/Layout'
-import home from '../home'
-
+import MidBtn from '../../components/ui/MidBtn'
 const testComponents = () => {
   return (
     <div>
-      <Layout />
+      <Layout>
+        <MidBtn/>
+      </Layout>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import {useEffect,useState} from 'react';
 import {getNowPlaying,getPopular,getTopRated,getUpcoming} from '../api/api';
 import Layout from "../../components/ui/Layout";
 import TopNav from "../../components/ui/TopNav";
+import MidBtn from "../../components/ui/MidBtn";
 
 
 export const getServerSideProps = async () =>{
@@ -34,6 +35,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
         <Layout>
             <TopNav/>
             <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} ></RandomImg>
+            <MidBtn/>
             <MoviesContainer>
                 <Category style={{color:'white'}}>Previews</Category>
                 <PosterContainer>
@@ -88,13 +90,13 @@ const MoviesContainer = styled.div`
 `
 
 const Category = styled.h3`
-<<<<<<< HEAD
+
     font-size: 27px;
     margin-left: 12px;
-=======
+
     font-size: 24px;
     margin-left: 15px;
->>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
+
 `;
 
 const PosterContainer = styled.div`
@@ -103,26 +105,25 @@ const PosterContainer = styled.div`
 `;
 
 const MoviePoster = styled.img`
-<<<<<<< HEAD
+
     width: 100px;
     height: 100px;
     margin-right: 7px;
-=======
+
     width: 103px;
     height: 161px;
     margin-left: 5px;
->>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
+
 `
 
 const PreviewMoviePoster = styled.img`
     width: 102px;
     height: 102px;
     border-radius: 50%;
-<<<<<<< HEAD
     margin-right: 7px;
-=======
+
     margin-left: 5px;
 
->>>>>>> 1f330b5e794a1b4e0310659b9f749a1089b55858
+
 `
 
