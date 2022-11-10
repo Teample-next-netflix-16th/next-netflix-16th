@@ -10,14 +10,14 @@ const TopNavbar = styled.nav`
     display: flex;
     justify-content: space-between;
     opacity: 100;
-    margin-left: 3%;
-    margin-right: auto;
+    margin-left: 10px;
+    margin-right: 20px;
     z-index: 998;
 
 a{
     text-align: center;
     color: white;
-    height; 54px;
+    height: 54px;
     margin-right: 25px;
     font-weight: 400;
     font-size: 17.1968px;
@@ -30,13 +30,13 @@ const Home = styled.div`
   cursor: pointer;
   margin-left: 10px;
   margin-top: 0px;
-`
+`;
 
 const TopNav = () => {
   return (
     <TopNavbar>
       <Home>
-        <Image src={Logo} alt="" width={30} height={40} />
+        <Image src={Logo} alt="netflix logo" width={30} height={40} />
       </Home>
       <a>TV Shows</a>
       <a>Movies</a>

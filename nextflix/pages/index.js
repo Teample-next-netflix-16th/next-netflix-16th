@@ -25,7 +25,7 @@ export default function Home() {
   useEffect(()=>{
     setTimeout(() => {
       router.push('/home');
-    }, 2500);
+    }, 2600);
   });
 
   return (

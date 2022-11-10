@@ -27,6 +27,9 @@ const Icon = styled.div`
    a {
     font-size: 10px;
   }
+  :active {
+    color: white;
+  }
 `
 
 const Footer = () => {

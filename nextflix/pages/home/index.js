@@ -34,7 +34,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
     return (
         <Layout>
             <TopNav/>
-            <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} ></RandomImg>
+            <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} />
             <MidBtn/>
             <MoviesContainer>
                 <Category style={{color:'white'}}>Previews</Category>
@@ -82,11 +82,11 @@ export default home;
 const RandomImg  = styled.img`
     top: 0;
     width: 100%;
-    max-height: 51%
+    max-height: 65%
 `;
 
 const MoviesContainer = styled.div`
-    margin-left: 10px;
+    
 `
 
 const Category = styled.h3`
@@ -112,8 +112,6 @@ const MoviePoster = styled.img`
 
     width: 103px;
     height: 161px;
-    margin-left: 5px;
-
 `
 
 const PreviewMoviePoster = styled.img`
@@ -121,7 +119,6 @@ const PreviewMoviePoster = styled.img`
     height: 102px;
     border-radius: 50%;
     margin-right: 7px;
-
     margin-left: 5px;
 
 
