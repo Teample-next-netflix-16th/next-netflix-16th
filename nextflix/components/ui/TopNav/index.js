@@ -12,6 +12,7 @@ const TopNavbar = styled.nav`
     opacity: 100;
     margin-left: 3%;
     margin-right: auto;
+    z-index: 998;
 
 a{
     text-align: center;

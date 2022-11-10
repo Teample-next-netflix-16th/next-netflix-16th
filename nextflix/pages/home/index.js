@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {useEffect,useState} from 'react';
 import {getNowPlaying,getPopular,getTopRated,getUpcoming} from '../api/api';
+import Layout from "../../components/ui/Layout";
+import TopNav from "../../components/ui/TopNav";
 
 
 export const getServerSideProps = async () =>{
@@ -29,8 +31,9 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
     },[]);
     
     return (
-        <>
-            <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`}></RandomImg>
+        <Layout>
+            <TopNav/>
+            <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} ></RandomImg>
             <MoviesContainer>
                 <Category style={{color:'white'}}>Previews</Category>
                 <PosterContainer>
@@ -68,7 +71,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                     ))}
                 </PosterContainer>
             </MoviesContainer>
-        </>
+        </Layout>
     );
 };
 
@@ -77,10 +80,10 @@ export default home;
 const RandomImg  = styled.img`
     top: 0;
     width: 100%;
+    hegiht: 51%;
 `;
 
 const MoviesContainer = styled.div`
-    
 `
 
 const Category = styled.h3`

@@ -14,6 +14,7 @@ const BtmNav = styled.footer`
   justify-content: space-between;
   align-items: center;
   position: absolute;
+  z-index: 998;
 `
 
 const Icon = styled.div`

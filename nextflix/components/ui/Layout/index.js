@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import TopNav from '../TopNav'
 import Footer from '../Footer'
 
 const Box = styled.div`
@@ -13,16 +12,20 @@ const Box = styled.div`
   border-color: white;
   margin: auto;
 
-  Footer{
-   
-  }
+
 `
+const Children = styled.div`
+position: absolute;
+width: 100%;
+height: 100%;
+overflow: scroll;
+z-index: 997;
+`;
 
 const Layout = ({ children }) => {
   return (
     <Box>
-      <TopNav />
-      {children}
+      <Children>{children}</Children>
       <Footer />
     </Box>
   )
