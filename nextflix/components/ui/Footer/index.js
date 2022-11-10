@@ -3,18 +3,20 @@ import { RiHome2Line, RiSearchLine } from 'react-icons/ri'
 import { HiDownload } from 'react-icons/hi'
 import { BsList } from 'react-icons/bs'
 import { MdOutlineVideoLibrary } from 'react-icons/md'
+import { useState,useEffect } from 'react'
 
 const BtmNav = styled.footer`
-  width: 100%;
-  height: 8%;
+  width: 400px;
+  height: 8vh;
   position: fixed;
   background-color: #121212;
-  bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
   z-index: 998;
+  position : relative;
+  transform : translateY(-100%);
+  margin:auto;
 `
 
 const Icon = styled.div`
@@ -33,25 +35,29 @@ const Icon = styled.div`
 `
 
 const Footer = () => {
+    
+    const onClick= (e) =>{
+        console.log(e.target)
+    }
   return (
     <BtmNav>
-      <Icon>
+      <Icon onClick={onClick} id='0'>
         <RiHome2Line size={25} />
         <a>Home</a>
       </Icon>
-      <Icon>
+      <Icon onClick={onClick} id='1'>
         <RiSearchLine size={25} />
         <a>Search</a>
       </Icon>
-      <Icon>
+      <Icon onClick={onClick} id='2'>
         <MdOutlineVideoLibrary size={25}/>
         <a>Coming Soon</a>
       </Icon>
-      <Icon>
+      <Icon onClick={onClick} id='3'>
         <HiDownload size={25}/>
         <a>Downloads</a>
       </Icon>
-      <Icon>
+      <Icon onClick={onClick} id='4'>
         <BsList size={25}/>
         <a>More</a>
       </Icon>
