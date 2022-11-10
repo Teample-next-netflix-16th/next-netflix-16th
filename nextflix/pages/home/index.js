@@ -80,7 +80,7 @@ export default home;
 const RandomImg  = styled.img`
     top: 0;
     width: 100%;
-    hegiht: 51%;
+    max-height: 51%
 `;
 
 const MoviesContainer = styled.div`
