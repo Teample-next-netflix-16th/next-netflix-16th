@@ -11,7 +11,7 @@ const BtnBox = styled.div`
 
 const IconBox = styled.div`
     cursor: pointer;
-    color: #8c8787;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;

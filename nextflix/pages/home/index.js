@@ -83,6 +83,7 @@ const RandomImg  = styled.img`
     top: 0;
     width: 100%;
     max-height: 51%
+    
 `;
 
 const MoviesContainer = styled.div`
