@@ -84,6 +84,11 @@ const RandomImg  = styled.img`
     top: 0;
     width: 100%;
     max-height: 70%;
+    // 그라데이션 적용안됨 .. 조언 부탁드립니다.
+    /* background: linear-gradient(to bottom, 
+        rgba(0,0,0,0),
+        rgba(0,0,0,1),
+    ); */
 `;
 
 const MoviesContainer = styled.div`
