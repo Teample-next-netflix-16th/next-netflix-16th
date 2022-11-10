@@ -84,11 +84,12 @@ const RandomImg  = styled.img`
 `;
 
 const MoviesContainer = styled.div`
+    margin-left: 10px;
 `
 
 const Category = styled.h3`
-    font-size: 24px;
-    margin-left: 15px;
+    font-size: 27px;
+    margin-left: 12px;
 `;
 
 const PosterContainer = styled.div`
@@ -107,6 +108,5 @@ const PreviewMoviePoster = styled.img`
     height: 102px;
     border-radius: 50%;
     margin-left: 5px;
-
 `
 

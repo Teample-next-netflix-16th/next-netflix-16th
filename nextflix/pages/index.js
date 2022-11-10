@@ -7,6 +7,7 @@ import logoanimation from '../public/netflix.gif'
 import { useRouter } from 'next/router';
 import { useEffect } from 'react'
 
+
 const GlobalStyle = createGlobalStyle`
 html, body {
   height: 100%;
