@@ -29,7 +29,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
     },[]);
     
     return (
-        <>
+        <HomeContainer>
             <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`}></RandomImg>
             <MoviesContainer>
                 <Category style={{color:'white'}}>Previews</Category>
@@ -68,15 +68,16 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                     ))}
                 </PosterContainer>
             </MoviesContainer>
-        </>
+        </HomeContainer>
     );
 };
 
 export default home;
 
-const RandomImg  = styled.img`
+const RandomImg = styled.img`
     top: 0;
     width: 100%;
+    max-height: 500px;
 `;
 
 const MoviesContainer = styled.div`
@@ -103,3 +104,6 @@ const PreviewMoviePoster = styled.img`
     border-radius: 50%;
 `
 
+const HomeContainer = styled.div`
+    width: 400px;
+`
