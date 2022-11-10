@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { createGlobalStyle } from 'styled-components'
 import logoanimation from '../public/netflix.gif'
 
+
 const GlobalStyle = createGlobalStyle`
 html, body {
   height: 100%;

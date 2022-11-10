@@ -84,10 +84,12 @@ const RandomImg  = styled.img`
 `;
 
 const MoviesContainer = styled.div`
+    margin-left: 10px;
 `
 
 const Category = styled.h3`
-
+    font-size: 27px;
+    margin-left: 12px;
 `;
 
 const PosterContainer = styled.div`
@@ -98,11 +100,13 @@ const PosterContainer = styled.div`
 const MoviePoster = styled.img`
     width: 100px;
     height: 100px;
+    margin-right: 7px;
 `
 
 const PreviewMoviePoster = styled.img`
     width: 100px;
     height: 100px;
     border-radius: 50%;
+    margin-right: 7px;
 `
 

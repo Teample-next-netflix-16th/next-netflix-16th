@@ -8,7 +8,6 @@ const Box = styled.div`
   height: 812px;
   //   추후에 100%로 수정 -> 걍 position을 absol로 바꿔야하나 ㄱ-
   background-color: black;
-  border-style: dotted;
   border-color: white;
   margin: auto;
 
