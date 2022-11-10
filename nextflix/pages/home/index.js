@@ -19,22 +19,23 @@ export const getServerSideProps = async () =>{
     const getUpcomingRes =  await getUpcoming();
     const upcomingData = getUpcomingRes.data.results;
 
-    const randomId = popularData[Math.floor(Math.random()*popularData.length)].id;
+    const randomIndex = popularData[Math.floor(Math.random()*popularData.length)];
 
-  return { props: { nowPlayingData, popularData, topRatedData, upcomingData, randomId } }
+  return { props: { nowPlayingData, popularData, topRatedData, upcomingData, randomIndex } }
 }
 
 
-const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomId }) => {
+const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomIndex }) => {
     const [randomMovie, setRandomMovie] = useState('')
     useEffect(() => {
-        setRandomMovie(popularData[Math.floor(Math.random()*popularData.length)]);
+        setRandomMovie(randomIndex);
     },[]);
     
     return (
         <Layout>
             <TopNav/>
-            <RandomImg key={randomId} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} />
+            <RandomImg key={randomIndex.id} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} />
+            <div style={{color:'white', fontSize:'15px', textAlign:'center', marginBottom: '5px'}}>{randomIndex.title}</div>
             <MidBtn/>
             <MoviesContainer>
                 <Category style={{color:'white'}}>Previews</Category>
@@ -82,7 +83,7 @@ export default home;
 const RandomImg  = styled.img`
     top: 0;
     width: 100%;
-    max-height: 65%
+    max-height: 70%;
 `;
 
 const MoviesContainer = styled.div`
