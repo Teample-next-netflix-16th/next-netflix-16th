@@ -35,7 +35,7 @@ const Icon = styled.div`
 `
 
 const Footer = () => {
-    
+
     const onClick= (e) =>{
         console.log(e.target)
     }

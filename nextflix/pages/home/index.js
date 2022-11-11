@@ -34,7 +34,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
     return (
         <Layout>
             <TopNav/>
-            <RandomImg key={randomIndex.id} src={`https://image.tmdb.org/t/p/w185/${randomMovie.poster_path}`} />
+            <RandomImg key={randomIndex.id} src={`https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`} />
             <div style={{color:'white', fontSize:'15px', textAlign:'center', marginBottom: '5px'}}>{randomIndex.title}</div>
             <MidBtn/>
             <MoviesContainer>
@@ -42,7 +42,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                 <PosterContainer>
                     {upcomingData.map((movie)=>(    
                         <div key={movie.id}>
-                            <PreviewMoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
+                            <PreviewMoviePoster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                         </div>
                     ))}
                 </PosterContainer>
@@ -51,7 +51,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                 <PosterContainer>
                     {nowPlayingData.map((movie)=>(    
                         <div key={movie.id}>
-                            <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
+                            <MoviePoster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                         </div>
                     ))}
                 </PosterContainer>
@@ -60,7 +60,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                 <PosterContainer>
                     {topRatedData.map((movie)=>(    
                         <div key={movie.id}>
-                            <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
+                            <MoviePoster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                         </div>
                     ))}
                 </PosterContainer>
@@ -69,7 +69,7 @@ const home = ({ nowPlayingData, popularData, topRatedData, upcomingData, randomI
                 <PosterContainer>
                     {popularData.map((movie)=>(    
                         <div key={movie.id}>
-                            <MoviePoster src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} />
+                            <MoviePoster src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                         </div>
                     ))}
                 </PosterContainer>
@@ -83,7 +83,7 @@ export default home;
 const RandomImg  = styled.img`
     top: 0;
     width: 100%;
-    max-height: 70%;
+    max-height: 50%;
     // 그라데이션 적용안됨 .. 조언 부탁드립니다.
     /* background: linear-gradient(to bottom, 
         rgba(0,0,0,0),
