@@ -49,7 +49,7 @@ const home = ({
       <TopNav />
       <RandomImg
         key={randomIndex.id}
-        src={`https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`}
+        src={randomMovie.poster_path ? `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`: ''}
       />
       <div
         style={{
