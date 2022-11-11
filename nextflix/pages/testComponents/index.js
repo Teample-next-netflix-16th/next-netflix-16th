@@ -4,7 +4,7 @@ const testComponents = () => {
   return (
     <div>
       <Layout>
-        <MidBtn/>
+        <MidBtn />
       </Layout>
     </div>
   )
