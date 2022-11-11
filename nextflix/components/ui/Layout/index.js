@@ -10,26 +10,26 @@ const Box = styled.div`
   margin: auto;
   min-width:375px
   min-height: 100%;
-  padding-bottom: 8vh;
-
+  padding-bottom: 67px;
 `
 const Children = styled.div`
-position: absolute;
-width: 100%;
-height: 100%;
-overflow: scroll;
-z-index: 997;
-`;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  z-index: 997;
+  padding-bottom: 8vh;
+`
 
 
 const Layout = ({ children }) => {
   return (
     <>
-    <Box>
-      <Children>{children}</Children>
-    </Box>
-    <Footer />
-    </>
+      <Box>
+        <Children>{children}</Children>
+      </Box>
+      <Footer/>
+      </>
   )
 }
 
