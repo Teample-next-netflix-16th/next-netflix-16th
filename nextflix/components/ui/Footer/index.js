@@ -36,28 +36,26 @@ const Icon = styled.div`
 `
 
 const Footer = () => {
-  const onClick = (e) => {
-    console.log(e.target)
-  }
+    
   return (
     <BtmNav>
-      <Icon onClick={onClick} id="0">
+      <Icon>
         <RiHome2Line size={25} />
         <a>Home</a>
       </Icon>
-      <Icon onClick={onClick} id="1">
+      <Icon >
         <RiSearchLine size={25} />
         <a>Search</a>
       </Icon>
-      <Icon onClick={onClick} id="2">
+      <Icon>
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
-      <Icon onClick={onClick} id="3">
+      <Icon >
         <HiDownload size={25} />
         <a>Downloads</a>
       </Icon>
-      <Icon onClick={onClick} id="4">
+      <Icon >
         <BsList size={25} />
         <a>More</a>
       </Icon>
