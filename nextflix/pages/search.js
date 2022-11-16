@@ -4,6 +4,7 @@ import {AiOutlineSearch} from 'react-icons/ai';
 import {GrClose} from 'react-icons/gr';
 import {FaRegPlayCircle} from 'react-icons/fa';
 import { getNowPlaying } from './api/api'
+import {useState} from 'react';
 
 export async function getServerSideProps () {
   const nowPlayingRes = await getNowPlaying()
@@ -17,23 +18,29 @@ export async function getServerSideProps () {
 }
 
 const search = ({nowPlayingData}) => {
-    
+  const [searchMovie, setSearchMovie] = useState('');
+  const filteredMovie = nowPlayingData.filter((searched) => {
+    return searched.title.toLowerCase().includes(searchMovie.toLowerCase());
+  });
+
     return (
       <Layout>
         <InputBox>
           <AiOutlineSearch style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'center', padding:'5px', marginLeft:'15px'}} />
-          <Input placeholder="Search for movie" />
+          <Input placeholder="Search for movie" onChange={(e) => {
+          setSearchMovie(e.target.value);
+        }} />
           <GrClose style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'right', padding:'5px', marginRight:'15px'}} />
         </InputBox>
         <Category>Top Searches</Category>
         <MovieContainer>
-        {nowPlayingData.map((movie) => (
-            <Movie key={movie.id}>
+        {filteredMovie.map((filtered) => (
+            <Movie key={filtered.id}>
               <MoviePoster
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
               />
               <Title>
-                {movie.title}
+                {filtered.title}
               </Title>
               <FaRegPlayCircle className='play' />
             </Movie>
