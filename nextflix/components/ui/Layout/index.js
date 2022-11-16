@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Footer from '../Footer'
+import styled from 'styled-components';
+import Footer from '../Footer';
 
 const Box = styled.div`
   position: relative;
@@ -11,7 +11,7 @@ const Box = styled.div`
   min-width:375px
   min-height: 100%;
   padding-bottom: 67px;
-`
+`;
 const Children = styled.div`
   position: absolute;
   width: 100%;
@@ -19,8 +19,7 @@ const Children = styled.div`
   overflow: scroll;
   z-index: 997;
   padding-bottom: 8vh;
-`
-
+`;
 
 const Layout = ({ children }) => {
   return (
@@ -28,9 +27,9 @@ const Layout = ({ children }) => {
       <Box>
         <Children>{children}</Children>
       </Box>
-      <Footer/>
-      </>
-  )
-}
+      <Footer />
+    </>
+  );
+};
 
-export default Layout
+export default Layout;

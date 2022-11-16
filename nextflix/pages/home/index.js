@@ -1,25 +1,32 @@
-import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import { getNowPlaying, getPopular, getTopRated, getUpcoming } from '../api/api'
-import Layout from '../../components/ui/Layout'
-import TopNav from '../../components/ui/TopNav'
-import MidBtn from '../../components/ui/MidBtn'
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
+import {
+  getNowPlaying,
+  getPopular,
+  getTopRated,
+  getUpcoming,
+} from '../api/api';
+import Layout from '../../components/ui/Layout';
+import TopNav from '../../components/ui/TopNav';
+import MidBtn from '../../components/ui/MidBtn';
+import { useRouter } from 'next/dist/client/router';
+import Link from 'next/link';
 
 export const getServerSideProps = async () => {
-  const nowPlayingRes = await getNowPlaying()
-  const nowPlayingData = nowPlayingRes.data.results
+  const nowPlayingRes = await getNowPlaying();
+  const nowPlayingData = nowPlayingRes.data.results;
 
-  const getPopularRes = await getPopular()
-  const popularData = getPopularRes.data.results
+  const getPopularRes = await getPopular();
+  const popularData = getPopularRes.data.results;
 
-  const getTopRatedRes = await getTopRated()
-  const topRatedData = getTopRatedRes.data.results
+  const getTopRatedRes = await getTopRated();
+  const topRatedData = getTopRatedRes.data.results;
 
-  const getUpcomingRes = await getUpcoming()
-  const upcomingData = getUpcomingRes.data.results
+  const getUpcomingRes = await getUpcoming();
+  const upcomingData = getUpcomingRes.data.results;
 
   const randomIndex =
-    popularData[Math.floor(Math.random() * popularData.length)]
+    popularData[Math.floor(Math.random() * popularData.length)];
 
   return {
     props: {
@@ -29,8 +36,8 @@ export const getServerSideProps = async () => {
       upcomingData,
       randomIndex,
     },
-  }
-}
+  };
+};
 
 const home = ({
   nowPlayingData,
@@ -39,17 +46,21 @@ const home = ({
   upcomingData,
   randomIndex,
 }) => {
-  const [randomMovie, setRandomMovie] = useState('')
+  const [randomMovie, setRandomMovie] = useState('');
   useEffect(() => {
-    setRandomMovie(randomIndex)
-  }, [])
+    setRandomMovie(randomIndex);
+  }, []);
 
   return (
     <Layout>
       <TopNav />
       <RandomImg
         key={randomIndex.id}
-        src={randomMovie.poster_path ? `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`: ''}
+        src={
+          randomMovie.poster_path
+            ? `https://image.tmdb.org/t/p/original/${randomMovie.poster_path}`
+            : ''
+        }
       />
       <div
         style={{
@@ -63,55 +74,107 @@ const home = ({
       </div>
       <MidBtn />
       <MoviesContainer>
-        <Category style={{ color: 'white' }}>Previews</Category>
+        <Category>Previews</Category>
         <PosterContainer>
           {upcomingData.map((movie) => (
             <div key={movie.id}>
-              <PreviewMoviePoster
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              />
+              <Link
+                href={{
+                  pathname: `/home/${movie.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+                as={`home/${movie.id}`}
+              >
+                <PreviewMoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                />
+              </Link>
             </div>
           ))}
         </PosterContainer>
 
-        <Category style={{ color: 'white' }}>Now Playing</Category>
+        <Category>Now Playing</Category>
         <PosterContainer>
           {nowPlayingData.map((movie) => (
             <div key={movie.id}>
-              <MoviePoster
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              />
+              <Link
+                href={{
+                  pathname: `/home/${movie.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+                as={`home/${movie.id}`}
+              >
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                />
+              </Link>
             </div>
           ))}
         </PosterContainer>
 
-        <Category style={{ color: 'white' }}>Top Rated</Category>
+        <Category>Top Rated</Category>
         <PosterContainer>
           {topRatedData.map((movie) => (
             <div key={movie.id}>
-              <MoviePoster
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              />
+              <Link
+                href={{
+                  pathname: `/home/${movie.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+                as={`home/${movie.id}`}
+              >
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                />
+              </Link>
             </div>
           ))}
         </PosterContainer>
 
-        <Category style={{ color: 'white' }}>Popular</Category>
+        <Category>Popular</Category>
         <PosterContainer>
           {popularData.map((movie) => (
             <div key={movie.id}>
-              <MoviePoster
-                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-              />
+              <Link
+                href={{
+                  pathname: `/home/${movie.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                    ),
+                    preview: JSON.stringify(movie.overview),
+                  },
+                }}
+                as={`home/${movie.id}`}
+              >
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                />
+              </Link>
             </div>
           ))}
         </PosterContainer>
       </MoviesContainer>
     </Layout>
-  )
-}
+  );
+};
 
-export default home
+export default home;
 
 const RandomImg = styled.img`
   top: 0;
@@ -122,22 +185,20 @@ const RandomImg = styled.img`
         rgba(0,0,0,0),
         rgba(0,0,0,1),
     ); */
-`
+`;
 
-const MoviesContainer = styled.div``
+const MoviesContainer = styled.div``;
 
 const Category = styled.h3`
   font-size: 27px;
   margin-left: 12px;
-
-  font-size: 24px;
-  margin-left: 15px;
-`
+  color: white;
+`;
 
 const PosterContainer = styled.div`
   display: float;
   overflow-y: auto;
-`
+`;
 
 const MoviePoster = styled.img`
   width: 100px;
@@ -146,7 +207,7 @@ const MoviePoster = styled.img`
 
   width: 103px;
   height: 161px;
-`
+`;
 
 const PreviewMoviePoster = styled.img`
   width: 102px;
@@ -154,4 +215,4 @@ const PreviewMoviePoster = styled.img`
   border-radius: 50%;
   margin-right: 7px;
   margin-left: 5px;
-`
+`;

@@ -1,9 +1,9 @@
-import styled from 'styled-components'
-import { RiHome2Line, RiSearchLine } from 'react-icons/ri'
-import { HiDownload } from 'react-icons/hi'
-import { BsList } from 'react-icons/bs'
-import { MdOutlineVideoLibrary } from 'react-icons/md'
-import { useState, useEffect } from 'react'
+import styled from 'styled-components';
+import { RiHome2Line, RiSearchLine } from 'react-icons/ri';
+import { HiDownload } from 'react-icons/hi';
+import { BsList } from 'react-icons/bs';
+import { MdOutlineVideoLibrary } from 'react-icons/md';
+import { useState, useEffect } from 'react';
 
 const BtmNav = styled.footer`
   width: 400px;
@@ -17,8 +17,8 @@ const BtmNav = styled.footer`
   bottom: 0;
   left: 0;
   right: 0;
-  margin : auto;
-`
+  margin: auto;
+`;
 
 const Icon = styled.div`
   cursor: pointer;
@@ -33,17 +33,16 @@ const Icon = styled.div`
   :active {
     color: white;
   }
-`
+`;
 
 const Footer = () => {
-    
   return (
     <BtmNav>
       <Icon>
         <RiHome2Line size={25} />
         <a>Home</a>
       </Icon>
-      <Icon >
+      <Icon>
         <RiSearchLine size={25} />
         <a>Search</a>
       </Icon>
@@ -51,16 +50,16 @@ const Footer = () => {
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
-      <Icon >
+      <Icon>
         <HiDownload size={25} />
         <a>Downloads</a>
       </Icon>
-      <Icon >
+      <Icon>
         <BsList size={25} />
         <a>More</a>
       </Icon>
     </BtmNav>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

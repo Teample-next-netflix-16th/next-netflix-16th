@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Link from 'next/link'
-import Image from 'next/image'
-import { createGlobalStyle } from 'styled-components'
-import logoanimation from '../public/netflix.gif'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
+import { createGlobalStyle } from 'styled-components';
+import logoanimation from '../public/netflix.gif';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const GlobalStyle = createGlobalStyle`
 html, body {
@@ -15,16 +15,16 @@ html, body {
   h1{
     color: pink;
   }}
-`
+`;
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
-      router.push('/home')
-    }, 2600)
-  })
+      router.push('/home');
+    }, 2600);
+  });
 
   return (
     <div className={styles.container}>
@@ -43,7 +43,7 @@ export default function Home() {
         style={{ width: '100%', height: '100%' }}
       />
     </div>
-  )
+  );
 }
 
 //배포를 위한 커밋
