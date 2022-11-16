@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Layout from '../components/ui/Layout'
-import {AiOutlineSearch} from 'react-icons/ai';
-import {GrClose} from 'react-icons/gr';
+import {AiOutlineSearch, AiOutlineClose} from 'react-icons/ai';
 import {FaRegPlayCircle} from 'react-icons/fa';
 import { getNowPlaying } from './api/api'
 import {useState} from 'react';
@@ -22,15 +21,18 @@ const search = ({nowPlayingData}) => {
   const filteredMovie = nowPlayingData.filter((searched) => {
     return searched.title.toLowerCase().includes(searchMovie.toLowerCase());
   });
+  const clearInput = () => {
+    setSearchMovie('');
+  }
 
     return (
       <Layout>
         <InputBox>
           <AiOutlineSearch style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'center', padding:'5px', marginLeft:'15px'}} />
-          <Input placeholder="Search for movie" onChange={(e) => {
-          setSearchMovie(e.target.value);
+          <Input placeholder="Search for movie" value={searchMovie} onChange={(e) => {
+            setSearchMovie(e.target.value);
         }} />
-          <GrClose style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'right', padding:'5px', marginRight:'15px'}} />
+          <AiOutlineClose className='closeBtn' onClick={clearInput} />
         </InputBox>
         <Category>Top Searches</Category>
         <MovieContainer>
@@ -42,7 +44,7 @@ const search = ({nowPlayingData}) => {
               <Title>
                 {filtered.title}
               </Title>
-              <FaRegPlayCircle className='play' />
+              <FaRegPlayCircle className='playBtn' />
             </Movie>
           ))}
         </MovieContainer>
@@ -57,6 +59,16 @@ const InputBox =  styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 44px;
+  .closeBtn {
+    color: white;
+    width: 20px;
+    height: 100%;
+    text-align: right;
+    margin-right: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 `;
 
 const Input = styled.input`
@@ -71,7 +83,6 @@ const Input = styled.input`
     color: #C4C4C4;
     font-size: 15.21px;
   }
-
 `;
 
 const Category = styled.h3`
@@ -93,7 +104,7 @@ const Movie = styled.div`
   height: 76px;
   display: flex;
   flex-direction: row;
-  .play {
+  .playBtn {
     color: white;
     width: 23px;
     height: 23px;
