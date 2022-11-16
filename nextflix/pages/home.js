@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 import { useEffect, useState } from 'react'
-import { getNowPlaying, getPopular, getTopRated, getUpcoming } from '../api/api'
-import Layout from '../../components/ui/Layout'
-import TopNav from '../../components/ui/TopNav'
-import MidBtn from '../../components/ui/MidBtn'
+import { getNowPlaying, getPopular, getTopRated, getUpcoming } from './api/api'
+import Layout from '../components/ui/Layout'
+import TopNav from '../components/ui/TopNav'
+import MidBtn from '../components/ui/MidBtn'
 
-export const getServerSideProps = async () => {
+export async function getServerSideProps () {
   const nowPlayingRes = await getNowPlaying()
   const nowPlayingData = nowPlayingRes.data.results
 
