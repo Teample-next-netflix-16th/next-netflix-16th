@@ -5,17 +5,6 @@ import {FaRegPlayCircle} from 'react-icons/fa';
 import { getNowPlaying } from './api/api'
 import {useState} from 'react';
 
-export async function getServerSideProps () {
-  const nowPlayingRes = await getNowPlaying()
-  const nowPlayingData = nowPlayingRes.data.results
-
-  return {
-    props: {
-      nowPlayingData,
-    }
-  }
-}
-
 const search = ({nowPlayingData}) => {
   const [searchMovie, setSearchMovie] = useState('');
   const filteredMovie = nowPlayingData.filter((searched) => {
@@ -130,5 +119,16 @@ const Title = styled.span`
   text-overflow:ellipsis;
   white-space:nowrap;
 `;
+
+export async function getServerSideProps () {
+  const nowPlayingRes = await getNowPlaying()
+  const nowPlayingData = nowPlayingRes.data.results
+
+  return {
+    props: {
+      nowPlayingData,
+    }
+  }
+}
 
 export default search;

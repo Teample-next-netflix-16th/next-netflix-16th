@@ -41,20 +41,20 @@ const Footer = () => {
   return (
     <BtmNav>
       <Icon>
-        {/* <Link href={'/home'} passHref> */}
-          <>
-          <RiHome2Line size={25} />
-          <a>Home</a>
-          </>
-        {/* </Link> */}
+        <Link href='/home'>
+          <Icon>
+            <RiHome2Line size={25} />
+            <a>Home</a>
+          </Icon>
+        </Link>
       </Icon>
       <Icon >
-        {/* <Link href={'/search'} passHref> */}
-          <>
-          <RiSearchLine size={25} />
-          <a>Search</a>
-          </>
-        {/* </Link> */}
+        <Link href='/search' >
+          <Icon>
+            <RiSearchLine size={25} />
+            <a>Search</a>
+          </Icon>
+        </Link>
       </Icon>
       <Icon>
         <MdOutlineVideoLibrary size={25} />
