@@ -4,6 +4,7 @@ import { HiDownload } from 'react-icons/hi'
 import { BsList } from 'react-icons/bs'
 import { MdOutlineVideoLibrary } from 'react-icons/md'
 import { useState, useEffect } from 'react'
+import Link from 'next/Link';
 
 const BtmNav = styled.footer`
   width: 400px;
@@ -40,12 +41,20 @@ const Footer = () => {
   return (
     <BtmNav>
       <Icon>
-        <RiHome2Line size={25} />
-        <a>Home</a>
+        <Link href={'/home'} passHref>
+          <>
+          <RiHome2Line size={25} />
+          <a>Home</a>
+          </>
+        </Link>
       </Icon>
       <Icon >
-        <RiSearchLine size={25} />
-        <a>Search</a>
+        <Link href={'/search'} passHref>
+          <>
+          <RiSearchLine size={25} />
+          <a>Search</a>
+          </>
+        </Link>
       </Icon>
       <Icon>
         <MdOutlineVideoLibrary size={25} />
