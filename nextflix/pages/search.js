@@ -3,24 +3,41 @@ import Layout from '../components/ui/Layout'
 import {AiOutlineSearch} from 'react-icons/ai';
 import {GrClose} from 'react-icons/gr';
 import {FaRegPlayCircle} from 'react-icons/fa';
+import { getNowPlaying } from './api/api'
 
+export async function getServerSideProps () {
+  const nowPlayingRes = await getNowPlaying()
+  const nowPlayingData = nowPlayingRes.data.results
 
-const search = () => {
+  return {
+    props: {
+      nowPlayingData,
+    }
+  }
+}
+
+const search = ({nowPlayingData}) => {
     
     return (
       <Layout>
         <InputBox>
           <AiOutlineSearch style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'center', padding:'5px', marginLeft:'15px'}} />
-          <Input placeholder="Search for a show, movie, genre, e.t.c." />
+          <Input placeholder="Search for movie" />
           <GrClose style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'right', padding:'5px', marginRight:'15px'}} />
         </InputBox>
         <Category>Top Searches</Category>
         <MovieContainer>
-          <Movie>
-            <Poster />
-            <Title>title</Title>
-            <FaRegPlayCircle className='play' />
-          </Movie>
+        {nowPlayingData.map((movie) => (
+            <Movie key={movie.id}>
+              <MoviePoster
+                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+              />
+              <Title>
+                {movie.title}
+              </Title>
+              <FaRegPlayCircle className='play' />
+            </Movie>
+          ))}
         </MovieContainer>
       </Layout>
     )
@@ -78,8 +95,7 @@ const Movie = styled.div`
   }
 `;
 
-const Poster = styled.div`
-  background-color: white;
+const MoviePoster = styled.img`
   width: 146px;
   height: 76px;
 `;
