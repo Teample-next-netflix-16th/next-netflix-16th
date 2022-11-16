@@ -90,7 +90,7 @@ const Category = styled.h3`
   margin-left: 12px;
   color: white;
   font-size: 24px;
-  margin-left: 15px;
+  margin-left: 10px;
 `
 
 const MovieContainer = styled.div`
@@ -104,23 +104,27 @@ const Movie = styled.div`
   height: 76px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   .playBtn {
     color: white;
     width: 23px;
-    height: 23px;
+    height: 100%;
     margin-right: 20px;
-    margin-top: 10px;
+    float: right;
   }
 `;
 
 const MoviePoster = styled.img`
   width: 146px;
   height: 76px;
+  object-fit: cover;
 `;
 
-const Title = styled.div`
-  font-size:  14.72px;
+const Title = styled.span`
+  font-size: 14.72px;
   color: white;
+  margin-left: 10px;
+  width: 200px;
 `;
 
 export default search;
