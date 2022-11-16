@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai'
-import { BsFillPlayFill } from 'react-icons/bs'
+import styled from 'styled-components';
+import { AiOutlinePlus, AiOutlineInfoCircle } from 'react-icons/ai';
+import { BsFillPlayFill } from 'react-icons/bs';
 
 const BtnBox = styled.div`
   display: flex;
   justify-content: space-evenly;
   height: 45px;
   margin-top: 10px;
-`
+`;
 
 const IconBox = styled.div`
   cursor: pointer;
@@ -19,7 +19,7 @@ const IconBox = styled.div`
   a {
     font-size: 10px;
   }
-`
+`;
 
 const PlayBox = styled.div`
   display: flex;
@@ -33,7 +33,7 @@ const PlayBox = styled.div`
   a {
     font-size: 20px;
   }
-`
+`;
 
 const MidBtn = () => {
   return (
@@ -51,7 +51,7 @@ const MidBtn = () => {
         <a>Info</a>
       </IconBox>
     </BtnBox>
-  )
-}
+  );
+};
 
-export default MidBtn
+export default MidBtn;
