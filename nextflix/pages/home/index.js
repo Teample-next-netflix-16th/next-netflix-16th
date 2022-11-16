@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import {
@@ -9,12 +10,12 @@ import {
 import Layout from '../../components/ui/Layout';
 import TopNav from '../../components/ui/TopNav';
 import MidBtn from '../../components/ui/MidBtn';
-import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
 
 export const getServerSideProps = async () => {
   const nowPlayingRes = await getNowPlaying();
   const nowPlayingData = nowPlayingRes.data.results;
+
 
   const getPopularRes = await getPopular();
   const popularData = getPopularRes.data.results;

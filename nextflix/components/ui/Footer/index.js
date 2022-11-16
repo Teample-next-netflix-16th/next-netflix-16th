@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { RiHome2Line, RiSearchLine } from 'react-icons/ri';
-import { HiDownload } from 'react-icons/hi';
-import { BsList } from 'react-icons/bs';
-import { MdOutlineVideoLibrary } from 'react-icons/md';
-import { useState, useEffect } from 'react';
+import styled from 'styled-components'
+import { RiHome2Line, RiSearchLine } from 'react-icons/ri'
+import { HiDownload } from 'react-icons/hi'
+import { BsList } from 'react-icons/bs'
+import { MdOutlineVideoLibrary } from 'react-icons/md'
+import Link from 'next/Link';
 
 const BtmNav = styled.footer`
   width: 400px;
@@ -39,12 +39,21 @@ const Footer = () => {
   return (
     <BtmNav>
       <Icon>
-        <RiHome2Line size={25} />
-        <a>Home</a>
+        <Link href='/home'>
+          <Icon>
+            <RiHome2Line size={25} />
+            <a>Home</a>
+          </Icon>
+        </Link>
       </Icon>
-      <Icon>
-        <RiSearchLine size={25} />
-        <a>Search</a>
+
+      <Icon >
+        <Link href='/search' >
+          <Icon>
+            <RiSearchLine size={25} />
+            <a>Search</a>
+          </Icon>
+        </Link>
       </Icon>
       <Icon>
         <MdOutlineVideoLibrary size={25} />
