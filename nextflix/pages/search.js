@@ -109,6 +109,7 @@ const Movie = styled.div`
     color: white;
     width: 23px;
     height: 100%;
+    margin-left: 20px;
     margin-right: 20px;
     float: right;
   }
@@ -124,7 +125,10 @@ const Title = styled.span`
   font-size: 14.72px;
   color: white;
   margin-left: 10px;
-  width: 200px;
+  width: 180px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 `;
 
 export default search;
