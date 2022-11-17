@@ -1,83 +1,98 @@
 import styled from 'styled-components';
-import Layout from '../components/ui/Layout'
-import {AiOutlineSearch, AiOutlineClose} from 'react-icons/ai';
-import {FaRegPlayCircle} from 'react-icons/fa';
-import { getNowPlaying } from './api/api'
-import {useState,useEffect} from 'react';
+import Layout from '../components/ui/Layout';
+import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
+import { FaRegPlayCircle } from 'react-icons/fa';
+import { getNowPlaying } from './api/api';
+import { useState, useEffect } from 'react';
 
 
-export default function search({nowPlayingData}) {
+export default function search({ nowPlayingData }) {
   const [searchMovie, setSearchMovie] = useState('');
   const [searchApi, setSearchApi] = useState(nowPlayingData);
+  const [filter, setFilter] = useState();
 
-  const onSearch = async(searchMovie) => {
-    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
-    const data = await response.json();
-    const searchData = data.results;
-    console.log(searchData);
-    console.log(nowPlayingData);
-    //setSearchApi(searchData);
-    console.log(searchApi);
-    return searchData;
-  }
+  useEffect(() => {
+    const onSearch = async (searchMovie) => {
+      if (searchMovie !== undefined) {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`
+        );
+        const data = await response.json();
+        const searchData = data.results;
+        setSearchApi(searchData);
+      }
+    };
 
-  useEffect(()=>{
-    let onSearchData = onSearch(searchMovie);
-    setSearchApi(onSearchData);
-    console.log(onSearchData);
-    console.log(searchApi);
-  },[searchMovie]);
+    if (searchApi !== undefined) {
+      const filteredMovie = searchApi.filter((searched) => {
+        if (searchMovie !== undefined) {
+          return searched.title
+            .toLowerCase()
+            .includes(searchMovie.toLowerCase());
+        }
+      });
+      setFilter(filteredMovie);
+    }
 
-  // useEffect(() => {
-  //   const onSearch = async (searchMovie) => {
-  //     const response = await fetch(
-  //       `https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`
-  //     );
-  //     const data = await response.json();
-  //     const searchData = data.results;
-  //     setSearchApi(searchData);
-  //     console.log(searchData);
-  //   };
-  //   onSearch();
-
-  // }, [searchMovie]);
-
-  const filteredMovie = nowPlayingData.filter((searched) => {
-    return searched.title.toLowerCase().includes(searchMovie.toLowerCase());
-  });
+    onSearch(searchMovie);
+  }, [searchMovie, searchApi]);
 
   const clearInput = () => {
     setSearchMovie('');
-  }
+  };
 
-    return (
-      <Layout>
-        <InputBox>
-          <AiOutlineSearch style={{color: '#C4C4C4', fontSize: '30px', height:'100%', textAlign:'center', padding:'5px', marginLeft:'15px'}} />
-          <Input placeholder="Search for movie" value={searchMovie} onChange={(e) => {
+  return (
+    <Layout>
+      <InputBox>
+        <AiOutlineSearch
+          style={{
+            color: '#C4C4C4',
+            fontSize: '30px',
+            height: '100%',
+            textAlign: 'center',
+            padding: '5px',
+            marginLeft: '15px',
+          }}
+        />
+        <Input
+          placeholder="Search for movie"
+          value={searchMovie}
+          onChange={(e) => {
             setSearchMovie(e.target.value);
-        }} />
-          <AiOutlineClose className='closeBtn' onClick={clearInput} />
-        </InputBox>
-        <Category>Top Searches</Category>
-        <MovieContainer>
-        {filteredMovie.map((filtered) => (
-            <Movie key={filtered.id}>
-              <MoviePoster
-                src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
-              />
-              <Title>
-                {filtered.title}
-              </Title>
-              <FaRegPlayCircle className='playBtn' />
-            </Movie>
-          ))}
-        </MovieContainer>
-      </Layout>
-    )
-};
+          }}
+        />
+        <AiOutlineClose className="closeBtn" onClick={clearInput} />
+      </InputBox>
+      <Category>Top Searches</Category>
+      <MovieContainer>
+      {filter !== undefined
+          ? filter.map((filtered) => (
+              <Movie key={filtered.id}>
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
+                />
+                <Title>{filtered.title}</Title>
+                <FaRegPlayCircle className="playBtn" />
+              </Movie>
+            ))
+          : ''}
+        {searchMovie === ''
+          ? nowPlayingData.map((filtered) => (
+              <Movie key={filtered.id}>
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
+                />
+                <Title>{filtered.title}</Title>
+                <FaRegPlayCircle className="playBtn" />
+              </Movie>
+            ))
+          : ''}
+      </MovieContainer>
+    </Layout>
+  );
+}
 
-const InputBox =  styled.div`
+const InputBox = styled.div`
   background-color: #424242;
   width: 100%;
   height: 52px;
@@ -104,8 +119,8 @@ const Input = styled.input`
   outline: none;
   color: white;
   font-size: 15.21px;
-  ::placeholder  {
-    color: #C4C4C4;
+  ::placeholder {
+    color: #c4c4c4;
     font-size: 15.21px;
   }
 `;
@@ -116,11 +131,9 @@ const Category = styled.h3`
   color: white;
   font-size: 24px;
   margin-left: 10px;
-`
+`;
 
-const MovieContainer = styled.div`
-
-`
+const MovieContainer = styled.div``;
 
 const Movie = styled.div`
   width: 100%;
@@ -151,9 +164,9 @@ const Title = styled.span`
   color: white;
   margin-left: 10px;
   width: 180px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 // const searchapi = 'https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}';
@@ -172,20 +185,19 @@ const Title = styled.span`
 //   return getsearch;
 // }
 
-export async function getServerSideProps () {
-  const nowPlayingRes = await getNowPlaying()
-  const nowPlayingData = nowPlayingRes.data.results
+export async function getServerSideProps() {
+  const nowPlayingRes = await getNowPlaying();
+  const nowPlayingData = nowPlayingRes.data.results;
 
   // const searchRes = await onSearch()
   // const searchData= searchRes.data.results
 
   return {
     props: {
-      nowPlayingData
-    }
-  }
+      nowPlayingData,
+    },
+  };
 }
-
 
 // export async function onSearch(searchMovie) {
 //   const searchapi = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
