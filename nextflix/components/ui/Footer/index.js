@@ -39,29 +39,28 @@ const Icon = styled.div`
 `;
 
 const Footer = () => {
-  const routing = {0 : '/home', 1: '/search'}
+  const routing = { 0: '/home', 1: '/search' };
   const [now, setNow] = useRecoilState(NowState);
 
   const router = useRouter();
 
   const ChangeNow = (e) => {
     setNow(e.currentTarget.id);
-      router.push(routing[e.currentTarget.id])
+    router.push(routing[e.currentTarget.id]);
   };
   return (
     <BtmNav>
-          <Icon id="0" Isnow={now} onClick={ChangeNow}>
-            <RiHome2Line size={25} />
-            <a >Home</a>
-          </Icon>
+      <Icon id="0" Isnow={now} onClick={ChangeNow}>
+        <RiHome2Line size={25} />
+        <a>Home</a>
+      </Icon>
 
+      <Icon id="1" Isnow={now} onClick={ChangeNow}>
+        <RiSearchLine size={25} />
+        <a>Search</a>
+      </Icon>
 
-          <Icon id="1" Isnow={now} onClick={ChangeNow}>
-            <RiSearchLine size={25} />
-            <a>Search</a>
-          </Icon>
-
-      <Icon id="2"  Isnow={now} onClick={ChangeNow}>
+      <Icon id="2" Isnow={now} onClick={ChangeNow}>
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
