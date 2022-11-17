@@ -4,6 +4,8 @@ import { HiDownload } from 'react-icons/hi'
 import { BsList } from 'react-icons/bs'
 import { MdOutlineVideoLibrary } from 'react-icons/md'
 import Link from 'next/Link';
+import {useRecoilState} from 'recoil';
+import { NowState } from '../../../states/states'
 
 const BtmNav = styled.footer`
   width: 400px;
@@ -22,7 +24,8 @@ const BtmNav = styled.footer`
 
 const Icon = styled.div`
   cursor: pointer;
-  color: #8c8787;
+  color: ${(props)=> props.Isnow == props.id ? 'white' : '#8c8787' };
+  // color : grey;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,34 +39,39 @@ const Icon = styled.div`
 `;
 
 const Footer = () => {
+  const [now,setNow] = useRecoilState(NowState);
+
+  const ChangeNow = (e) =>{
+    setNow(e.currentTarget.id)
+  }
   return (
     <BtmNav>
-      <Icon>
-        {/* <Link href='/home'> */}
-          <Icon>
-            <RiHome2Line size={25} />
-            <a>Home</a>
+      <Icon >
+        <Link href='/home'>
+          <Icon id='0' Isnow={now} onClick={ChangeNow}>
+            <RiHome2Line size={25}  />
+            <a >Home</a>
           </Icon>
-        {/* </Link> */}
+        </Link>
       </Icon>
 
       <Icon >
-        {/* <Link href='/search' > */}
-          <Icon>
+        <Link href='/search' >
+          <Icon id='1' Isnow={now} onClick={ChangeNow}>
             <RiSearchLine size={25} />
             <a>Search</a>
           </Icon>
-        {/* </Link> */}
+        </Link>
       </Icon>
-      <Icon>
+      <Icon id='2' Isnow={now} onClick={ChangeNow}>
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
-      <Icon>
+      <Icon id='3' Isnow={now} onClick={ChangeNow}>
         <HiDownload size={25} />
         <a>Downloads</a>
       </Icon>
-      <Icon>
+      <Icon id='4' Isnow={now} onClick={ChangeNow}>
         <BsList size={25} />
         <a>More</a>
       </Icon>
