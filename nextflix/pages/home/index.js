@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import {
@@ -15,7 +14,6 @@ import Link from 'next/link';
 export const getServerSideProps = async () => {
   const nowPlayingRes = await getNowPlaying();
   const nowPlayingData = nowPlayingRes.data.results;
-
 
   const getPopularRes = await getPopular();
   const popularData = getPopularRes.data.results;
