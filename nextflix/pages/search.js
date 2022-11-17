@@ -10,11 +10,14 @@ export default function search({nowPlayingData}) {
   const [searchMovie, setSearchMovie] = useState('');
   const [searchApi, setSearchApi] = useState([]);
 
-  const onSearch = async({searchMovie}) => {
+  const onSearch = async(searchMovie) => {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
     const data = await response.json();
     const searchData = data.results;
-    console.log(data);
+    console.log(searchData);
+    console.log(nowPlayingData);
+    setSearchApi(searchData);
+    console.log(searchApi);
     return searchData;
   }
 
