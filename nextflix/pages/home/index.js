@@ -16,7 +16,6 @@ export const getServerSideProps = async () => {
   const nowPlayingRes = await getNowPlaying();
   const nowPlayingData = nowPlayingRes.data.results;
 
-
   const getPopularRes = await getPopular();
   const popularData = getPopularRes.data.results;
 

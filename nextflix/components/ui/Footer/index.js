@@ -39,21 +39,21 @@ const Footer = () => {
   return (
     <BtmNav>
       <Icon>
-        <Link href='/home'>
+        {/* <Link href='/home'> */}
           <Icon>
             <RiHome2Line size={25} />
             <a>Home</a>
           </Icon>
-        </Link>
+        {/* </Link> */}
       </Icon>
 
       <Icon >
-        <Link href='/search' >
+        {/* <Link href='/search' > */}
           <Icon>
             <RiSearchLine size={25} />
             <a>Search</a>
           </Icon>
-        </Link>
+        {/* </Link> */}
       </Icon>
       <Icon>
         <MdOutlineVideoLibrary size={25} />

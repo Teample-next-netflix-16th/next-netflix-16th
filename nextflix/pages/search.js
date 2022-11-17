@@ -3,13 +3,32 @@ import Layout from '../components/ui/Layout'
 import {AiOutlineSearch, AiOutlineClose} from 'react-icons/ai';
 import {FaRegPlayCircle} from 'react-icons/fa';
 import { getNowPlaying } from './api/api'
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
-const search = ({nowPlayingData}) => {
+
+export default function search({nowPlayingData}) {
   const [searchMovie, setSearchMovie] = useState('');
+  const [searchApi, setSearchApi] = useState([]);
+
+  const onSearch = async({searchMovie}) => {
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
+    const data = await response.json();
+    const searchData = data.results;
+    console.log(data);
+    return searchData;
+  }
+
+  useEffect(()=>{
+    const onSearchData = onSearch(searchMovie);
+    setSearchApi(onSearchData);
+    console.log(onSearchData);
+    console.log(searchApi);
+  },[searchMovie]);
+
   const filteredMovie = nowPlayingData.filter((searched) => {
     return searched.title.toLowerCase().includes(searchMovie.toLowerCase());
   });
+
   const clearInput = () => {
     setSearchMovie('');
   }
@@ -39,7 +58,7 @@ const search = ({nowPlayingData}) => {
         </MovieContainer>
       </Layout>
     )
-}
+};
 
 const InputBox =  styled.div`
   background-color: #424242;
@@ -120,15 +139,42 @@ const Title = styled.span`
   white-space:nowrap;
 `;
 
+// const searchapi = 'https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}';
+
+// export default function getsearchapi({searchMovie}){
+// const searchapi = axios.create({
+//   baseURL: 'https://api.themoviedb.org/3/search/movie?',
+//   params: {
+//     api_key: 'f85ba1745021cb0f98ac340407ad592b',
+//     query: searchMovie
+//   },
+// });
+
+// export async function getSearch({searchapi}) {
+//   const getsearch = await searchapi.get();
+//   return getsearch;
+// }
+
 export async function getServerSideProps () {
   const nowPlayingRes = await getNowPlaying()
   const nowPlayingData = nowPlayingRes.data.results
 
+  // const searchRes = await onSearch()
+  // const searchData= searchRes.data.results
+
   return {
     props: {
-      nowPlayingData,
+      nowPlayingData
     }
   }
 }
 
-export default search;
+
+// export async function onSearch(searchMovie) {
+//   const searchapi = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
+//   const data = await searchapi.json();
+//   const searchData = data.results;
+//   return searchData;
+// }
+
+// export default search;
