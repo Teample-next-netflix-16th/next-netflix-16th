@@ -4,7 +4,6 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import { getNowPlaying } from './api/api';
 import { useState, useEffect } from 'react';
-import default_Img from "../public/images/ing.png";
 import Link from 'next/link';
 
 
@@ -42,10 +41,6 @@ export default function search({ nowPlayingData }) {
   const clearInput = () => {
     setSearchMovie('');
   };
-
-  // const onErrorImg = (e) => {
-  //   e.target.src = default_Img;
-  // }
 
   return (
     <Layout>
@@ -94,7 +89,30 @@ export default function search({ nowPlayingData }) {
               </Movie>
               </Link>
             ))
-          : ''}
+          : 
+          nowPlayingData.map((filtered) => (
+            <Link
+                href={{
+                  pathname: `/home/${filtered.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${filtered.poster_path}`
+                    ),
+                    preview: JSON.stringify(filtered.overview),
+                  },
+                }}
+                as={`home/${filtered.id}`}
+              >
+              <Movie key={filtered.id}>
+                <MoviePoster
+                  src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
+                />
+                <Title>{filtered.title}</Title>
+                <FaRegPlayCircle className="playBtn" />
+              </Movie>
+            </Link>
+            ))
+          }
         {searchMovie === ''
           ? nowPlayingData.map((filtered) => (
             <Link
