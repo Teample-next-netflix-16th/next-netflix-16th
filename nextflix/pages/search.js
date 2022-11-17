@@ -8,7 +8,7 @@ import {useState,useEffect} from 'react';
 
 export default function search({nowPlayingData}) {
   const [searchMovie, setSearchMovie] = useState('');
-  const [searchApi, setSearchApi] = useState([]);
+  const [searchApi, setSearchApi] = useState(nowPlayingData);
 
   const onSearch = async(searchMovie) => {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
@@ -16,17 +16,31 @@ export default function search({nowPlayingData}) {
     const searchData = data.results;
     console.log(searchData);
     console.log(nowPlayingData);
-    setSearchApi(searchData);
+    //setSearchApi(searchData);
     console.log(searchApi);
     return searchData;
   }
 
   useEffect(()=>{
-    const onSearchData = onSearch(searchMovie);
+    let onSearchData = onSearch(searchMovie);
     setSearchApi(onSearchData);
     console.log(onSearchData);
     console.log(searchApi);
   },[searchMovie]);
+
+  // useEffect(() => {
+  //   const onSearch = async (searchMovie) => {
+  //     const response = await fetch(
+  //       `https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`
+  //     );
+  //     const data = await response.json();
+  //     const searchData = data.results;
+  //     setSearchApi(searchData);
+  //     console.log(searchData);
+  //   };
+  //   onSearch();
+
+  // }, [searchMovie]);
 
   const filteredMovie = nowPlayingData.filter((searched) => {
     return searched.title.toLowerCase().includes(searchMovie.toLowerCase());

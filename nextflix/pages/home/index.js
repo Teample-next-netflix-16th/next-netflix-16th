@@ -28,6 +28,7 @@ export const getServerSideProps = async () => {
   const randomIndex =
     popularData[Math.floor(Math.random() * popularData.length)];
 
+
   return {
     props: {
       nowPlayingData,
@@ -50,6 +51,7 @@ const home = ({
   useEffect(() => {
     setRandomMovie(randomIndex);
   }, []);
+
 
   return (
     <Layout>
