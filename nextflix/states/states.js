@@ -1,6 +1,6 @@
-import {atom} from 'recoil';
+import { atom } from 'recoil';
 
 export const NowState = atom({
-    key : 'NowState',
-    default : 0
-})
+  key: 'NowState',
+  default: 0,
+});
