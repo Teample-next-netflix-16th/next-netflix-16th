@@ -46,7 +46,9 @@ const Footer = () => {
 
   const ChangeNow = (e) => {
     setNow(e.currentTarget.id);
+    if (e.currentTarget.id === (0 || 1)){
     router.push(routing[e.currentTarget.id]);
+    }
   };
   return (
     <BtmNav>
