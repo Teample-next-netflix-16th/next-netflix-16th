@@ -4,7 +4,6 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import { getNowPlaying } from './api/api';
 import { useState, useEffect } from 'react';
-import default_Img from '../public/images/ing.png';
 import Link from 'next/link';
 
 export default function search({ nowPlayingData }) {
@@ -46,7 +45,7 @@ export default function search({ nowPlayingData }) {
   const clearInput = () => {
     setSearchMovie('');
   };
-
+  
 
   return (
     <Layout>
@@ -87,9 +86,11 @@ export default function search({ nowPlayingData }) {
                 as={`home/${filtered.id}`}
               >
                 <Movie key={filtered.id}>
+                {filtered.poster_path  == null ? <ErrImg /> : 
                   <MoviePoster
                     src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
                   />
+                }
                   <Title>{filtered.title}</Title>
                   <FaRegPlayCircle className="playBtn" />
                 </Movie>
@@ -111,9 +112,11 @@ export default function search({ nowPlayingData }) {
                 as={`home/${filtered.id}`}
               >
                 <Movie key={filtered.id}>
+                {filtered.poster_path  == null ? <ErrImg /> : 
                   <MoviePoster
                     src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
                   />
+                }
                   <Title>{filtered.title}</Title>
                   <FaRegPlayCircle className="playBtn" />
                 </Movie>
@@ -190,6 +193,12 @@ const MoviePoster = styled.img`
   width: 146px;
   height: 76px;
   object-fit: cover;
+`;
+
+const ErrImg = styled.div`
+  width: 146px;
+  height: 76px;
+  background-color: white;
 `;
 
 const Title = styled.span`
