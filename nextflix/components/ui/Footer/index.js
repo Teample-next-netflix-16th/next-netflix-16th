@@ -48,6 +48,10 @@ const Footer = () => {
     setNow(e.currentTarget.id);
       router.push(routing[e.currentTarget.id])
   };
+
+  const ChangeIsNow = (e) =>{
+    setNow(e.currentTarget.id);
+  }
   return (
     <BtmNav>
           <Icon id="0" Isnow={now} onClick={ChangeNow}>
@@ -61,15 +65,15 @@ const Footer = () => {
             <a>Search</a>
           </Icon>
 
-      <Icon id="2"  Isnow={now} onClick={ChangeNow}>
+      <Icon id="2"  Isnow={now} onClick={ChangeIsNow}>
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
-      <Icon id="3" Isnow={now} onClick={ChangeNow}>
+      <Icon id="3" Isnow={now} onClick={ChangeIsNow}>
         <HiDownload size={25} />
         <a>Downloads</a>
       </Icon>
-      <Icon id="4" Isnow={now} onClick={ChangeNow}>
+      <Icon id="4" Isnow={now} onClick={ChangeIsNow}>
         <BsList size={25} />
         <a>More</a>
       </Icon>
