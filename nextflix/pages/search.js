@@ -5,6 +5,7 @@ import { FaRegPlayCircle } from 'react-icons/fa';
 import { getNowPlaying } from './api/api';
 import { useState, useEffect } from 'react';
 
+
 export default function search({ nowPlayingData }) {
   const [searchMovie, setSearchMovie] = useState();
   const [searchApi, setSearchApi] = useState(nowPlayingData);
