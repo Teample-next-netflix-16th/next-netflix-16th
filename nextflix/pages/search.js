@@ -4,10 +4,11 @@ import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 import { FaRegPlayCircle } from 'react-icons/fa';
 import { getNowPlaying } from './api/api';
 import { useState, useEffect } from 'react';
-
+import default_Img from '../public/images/ing.png';
+import Link from 'next/link';
 
 export default function search({ nowPlayingData }) {
-  const [searchMovie, setSearchMovie] = useState();
+  const [searchMovie, setSearchMovie] = useState('');
   const [searchApi, setSearchApi] = useState(nowPlayingData);
   const [filter, setFilter] = useState();
 
@@ -31,15 +32,21 @@ export default function search({ nowPlayingData }) {
             .includes(searchMovie.toLowerCase());
         }
       });
-      setFilter(filteredMovie);
+      if(searchMovie === ''){
+        setFilter(undefined)
+      }
+      else
+        setFilter(filteredMovie);
     }
 
     onSearch(searchMovie);
   }, [searchMovie, searchApi]);
 
+
   const clearInput = () => {
     setSearchMovie('');
   };
+
 
   return (
     <Layout>
@@ -67,24 +74,50 @@ export default function search({ nowPlayingData }) {
       <MovieContainer>
         {filter !== undefined
           ? filter.map((filtered) => (
-              <Movie key={filtered.id}>
-                <MoviePoster
-                  src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
-                />
-                <Title>{filtered.title}</Title>
-                <FaRegPlayCircle className="playBtn" />
-              </Movie>
+              <Link
+                href={{
+                  pathname: `/home/${filtered.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${filtered.poster_path}`
+                    ),
+                    preview: JSON.stringify(filtered.overview),
+                  },
+                }}
+                as={`home/${filtered.id}`}
+              >
+                <Movie key={filtered.id}>
+                  <MoviePoster
+                    src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
+                  />
+                  <Title>{filtered.title}</Title>
+                  <FaRegPlayCircle className="playBtn" />
+                </Movie>
+              </Link>
             ))
           : ''}
         {searchMovie === ''
           ? nowPlayingData.map((filtered) => (
-              <Movie key={filtered.id}>
-                <MoviePoster
-                  src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
-                />
-                <Title>{filtered.title}</Title>
-                <FaRegPlayCircle className="playBtn" />
-              </Movie>
+              <Link
+                href={{
+                  pathname: `/home/${filtered.id}`,
+                  query: {
+                    poster: JSON.stringify(
+                      `https://image.tmdb.org/t/p/original/${filtered.poster_path}`
+                    ),
+                    preview: JSON.stringify(filtered.overview),
+                  },
+                }}
+                as={`home/${filtered.id}`}
+              >
+                <Movie key={filtered.id}>
+                  <MoviePoster
+                    src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
+                  />
+                  <Title>{filtered.title}</Title>
+                  <FaRegPlayCircle className="playBtn" />
+                </Movie>
+              </Link>
             ))
           : ''}
       </MovieContainer>

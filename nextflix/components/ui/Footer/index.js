@@ -49,9 +49,9 @@ const Footer = () => {
     router.push(routing[e.currentTarget.id]);
   };
 
-  const ChangeIsNow = (e) =>{
+  const ChangeIsNow = (e) => {
     setNow(e.currentTarget.id);
-  }
+  };
   return (
     <BtmNav>
       <Icon id="0" Isnow={now} onClick={ChangeNow}>
