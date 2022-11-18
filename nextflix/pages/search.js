@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 
 export default function search({ nowPlayingData }) {
-  const [searchMovie, setSearchMovie] = useState('');
+  const [searchMovie, setSearchMovie] = useState();
   const [searchApi, setSearchApi] = useState(nowPlayingData);
   const [filter, setFilter] = useState();
 
@@ -66,6 +66,7 @@ export default function search({ nowPlayingData }) {
       </InputBox>
       <Category>Top Searches</Category>
       <MovieContainer>
+
       {filter !== undefined
           ? filter.map((filtered) => (
             <Link
@@ -80,6 +81,7 @@ export default function search({ nowPlayingData }) {
                 }}
                 as={`home/${filtered.id}`}
               >
+
               <Movie key={filtered.id}>
                 <MoviePoster
                   src={`https://image.tmdb.org/t/p/original/${filtered.poster_path}`}
@@ -88,6 +90,7 @@ export default function search({ nowPlayingData }) {
                 <FaRegPlayCircle className="playBtn" />
               </Movie>
               </Link>
+
             ))
           : 
           nowPlayingData.map((filtered) => (
@@ -115,6 +118,7 @@ export default function search({ nowPlayingData }) {
           }
         {searchMovie === ''
           ? nowPlayingData.map((filtered) => (
+
             <Link
                 href={{
                   pathname: `/home/${filtered.id}`,
@@ -135,6 +139,7 @@ export default function search({ nowPlayingData }) {
                 <FaRegPlayCircle className="playBtn" />
               </Movie>
             </Link>
+
             ))
           : ''}
       </MovieContainer>
@@ -219,28 +224,9 @@ const Title = styled.span`
   white-space: nowrap;
 `;
 
-// const searchapi = 'https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}';
-
-// export default function getsearchapi({searchMovie}){
-// const searchapi = axios.create({
-//   baseURL: 'https://api.themoviedb.org/3/search/movie?',
-//   params: {
-//     api_key: 'f85ba1745021cb0f98ac340407ad592b',
-//     query: searchMovie
-//   },
-// });
-
-// export async function getSearch({searchapi}) {
-//   const getsearch = await searchapi.get();
-//   return getsearch;
-// }
-
 export async function getServerSideProps() {
   const nowPlayingRes = await getNowPlaying();
   const nowPlayingData = nowPlayingRes.data.results;
-
-  // const searchRes = await onSearch()
-  // const searchData= searchRes.data.results
 
   return {
     props: {
@@ -248,12 +234,3 @@ export async function getServerSideProps() {
     },
   };
 }
-
-// export async function onSearch(searchMovie) {
-//   const searchapi = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=f85ba1745021cb0f98ac340407ad592b&query=${searchMovie}`);
-//   const data = await searchapi.json();
-//   const searchData = data.results;
-//   return searchData;
-// }
-
-// export default search;
