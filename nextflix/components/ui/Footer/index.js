@@ -63,12 +63,8 @@ const Footer = () => {
         <RiSearchLine size={25} />
         <a>Search</a>
       </Icon>
-
-<<<<<<< HEAD
       <Icon id="2"  Isnow={now} onClick={ChangeIsNow}>
-=======
-      <Icon id="2" Isnow={now} onClick={ChangeIsNow}>
->>>>>>> 17bbdf0cb8b3ab7d342611b5218e65598b0ce675
+
         <MdOutlineVideoLibrary size={25} />
         <a>Coming Soon</a>
       </Icon>
